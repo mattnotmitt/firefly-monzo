@@ -1,0 +1,14 @@
+version: '3'
+services:
+    database:
+        image: 'mongo'
+        container_name: 'firefly-monzo-db'
+        environment:
+            - MONGO_INITDB_DATABASE=firefly-monzo
+            - MONGO_INITDB_ROOT_USERNAME=fm
+        env_file:
+            - ./.env
+        volumes:
+            - ./.docker/volumes/monzo-firefly-db-volume:/data/db
+        ports:
+            - '27017-27019:27017-27019'
